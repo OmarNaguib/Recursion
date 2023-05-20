@@ -18,4 +18,13 @@ const merge = function MergeTwoSortedArrays(first, second) {
   return mergedArray;
 };
 
-console.log(merge([1, 3, 5], [2, 5, 7, 7]));
+function mergeSort(array) {
+  if (array.length < 2) return array;
+  const halfwayPoint = Math.floor(array.length / 2);
+  return merge(
+    mergeSort(array.slice(0, halfwayPoint)),
+    mergeSort(array.slice(halfwayPoint))
+  );
+}
+
+console.log(mergeSort([1, 8, 6, 4, 7, 2, 3, 6, 5, 8, 1, 5]));
